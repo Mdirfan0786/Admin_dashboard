@@ -39,7 +39,7 @@ export default function OverviewCards() {
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
-              alignItems: "center", // Card ke content ko center me lane ke liye
+              alignItems: "center",
             }}
           >
             <Typography variant="h6" color="text.secondary">

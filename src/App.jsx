@@ -31,6 +31,7 @@ export default function App() {
       <Topbar
         toggleTheme={toggleTheme}
         handleDrawerToggle={handleDrawerToggle}
+        darkMode={darkMode}
       />
 
       <Sidebar

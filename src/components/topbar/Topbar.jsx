@@ -2,8 +2,9 @@ import { AppBar, Toolbar, Typography, IconButton } from "@mui/material";
 
 import MenuIcon from "@mui/icons-material/Menu";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
 
-export default function Topbar({ toggleTheme, handleDrawerToggle }) {
+export default function Topbar({ toggleTheme, handleDrawerToggle, darkMode }) {
   return (
     <AppBar
       position="fixed"
@@ -29,7 +30,7 @@ export default function Topbar({ toggleTheme, handleDrawerToggle }) {
         </Typography>
 
         <IconButton color="inherit" onClick={toggleTheme}>
-          <DarkModeIcon />
+          {darkMode ? <LightModeIcon /> : <DarkModeIcon />}
         </IconButton>
       </Toolbar>
     </AppBar>

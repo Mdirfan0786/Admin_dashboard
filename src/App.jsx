@@ -9,27 +9,48 @@ import DataTable from "./components/dataTable/DataTable";
 
 import { lightTheme, darkTheme } from "./theme";
 
+const drawerWidth = 240;
+
 export default function App() {
   const [darkMode, setDarkMode] = useState(false);
 
+  const [mobileOpen, setMobileOpen] = useState(false);
+
   const toggleTheme = () => {
     setDarkMode(!darkMode);
+  };
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
   };
 
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <CssBaseline />
 
-      <Topbar toggleTheme={toggleTheme} />
+      <Topbar
+        toggleTheme={toggleTheme}
+        handleDrawerToggle={handleDrawerToggle}
+      />
 
-      <Sidebar />
+      <Sidebar
+        mobileOpen={mobileOpen}
+        handleDrawerToggle={handleDrawerToggle}
+      />
 
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          p: 4,
-          ml: "240px",
+          p: 3,
+
+          width: {
+            sm: `calc(100% - ${drawerWidth}px)`,
+          },
+
+          ml: {
+            sm: `${drawerWidth}px`,
+          },
         }}
       >
         <Toolbar />

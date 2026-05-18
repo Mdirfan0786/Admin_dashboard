@@ -1,4 +1,4 @@
-import { Grid, Card, CardContent, Typography } from "@mui/material";
+import { Card, CardContent, Typography, Stack } from "@mui/material";
 
 const dashboardData = [
   {
@@ -17,20 +17,45 @@ const dashboardData = [
 
 export default function OverviewCards() {
   return (
-    <Grid container spacing={3}>
+    <Stack
+      direction={{ xs: "column", md: "row" }}
+      spacing={3}
+      sx={{ width: "100%", mb: 3 }}
+    >
       {dashboardData.map((item, index) => (
-        <Grid item xs={12} sm={6} md={4} key={index}>
-          <Card elevation={4}>
-            <CardContent>
-              <Typography variant="h6">{item.title}</Typography>
+        <Card
+          key={index}
+          elevation={4}
+          sx={{
+            width: "100%",
+            flex: { md: 1 },
+            height: 150,
+            borderRadius: 3,
+          }}
+        >
+          <CardContent
+            sx={{
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center", // Card ke content ko center me lane ke liye
+            }}
+          >
+            <Typography variant="h6" color="text.secondary">
+              {item.title}
+            </Typography>
 
-              <Typography variant="h4" color="primary" sx={{ mt: 2 }}>
-                {item.value}
-              </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
+            <Typography
+              variant="h4"
+              color="primary"
+              sx={{ mt: 1, fontWeight: "bold" }}
+            >
+              {item.value}
+            </Typography>
+          </CardContent>
+        </Card>
       ))}
-    </Grid>
+    </Stack>
   );
 }
